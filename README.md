@@ -50,8 +50,8 @@ detectionList:[{"label":"mouse","bbox":[198.35149,119.59349,224.45099,158.48425]
 ### CLI
 
 ```sh
-mvn clean package appassembler:assemble
-target/hello-cli/bin/hello.sh -f dog.jpg -v v5
+mvn clean package appassembler:assemble -f pom.windows.21.xml
+target/hello-cli/bin/hello.sh
 ```
 
 ### DOCKER
@@ -77,14 +77,18 @@ docker run -ti nvcr.io/nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04 bash
 ```sh
 # use jdk21
 export JAVA_HOME=/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home
-# use jdk8
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home
 # build jar
-mvn clean install -DskipTests
-# build with jdk8
-docker build -t onnxruntime-cuda-8 -f Dockerfile.cuda.8 .
+mvn clean install -DskipTests -f pom.windows.21.xml
 # build with jdk21
 docker build -t onnxruntime-cuda-21 -f Dockerfile.cuda.21 .
+```
+
+```sh
+# use jdk8
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home
+mvn clean install -DskipTests -f pom.windows.8.xml
+# build with jdk8
+docker build -t onnxruntime-cuda-8 -f Dockerfile.cuda.8 .
 ```
 
 #### run
