@@ -15,7 +15,7 @@ import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.util.*;
 
-public class HelloOrtSessionV8 extends HelloOrtSession{
+public class HelloOrtSessionV8 extends HelloOrtSession {
 
     public HelloOrtSessionV8(String modelPath, String labelPath, float confThreshold, float nmsThreshold) throws OrtException, IOException {
         super(modelPath, labelPath, confThreshold, nmsThreshold);
@@ -87,7 +87,7 @@ public class HelloOrtSessionV8 extends HelloOrtSession{
 
         for (float[] bbox : outputs) {
             float[] conditionalProbabilities = Arrays.copyOfRange(bbox, 4, 84);
-            int label =  argmax(conditionalProbabilities);
+            int label = argmax(conditionalProbabilities);
             float conf = conditionalProbabilities[label];
             if (conf < this.confThreshold) {
                 continue;
@@ -124,7 +124,7 @@ public class HelloOrtSessionV8 extends HelloOrtSession{
         return detections;
     }
 
-    public static float[][] transposeMatrix(float [][] m){
+    public static float[][] transposeMatrix(float[][] m) {
         float[][] temp = new float[m[0].length][m.length];
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[0].length; j++) {

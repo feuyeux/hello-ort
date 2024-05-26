@@ -8,6 +8,7 @@ import org.feuyeux.hello.ort.service.HelloOrtService;
 
 import java.io.IOException;
 
+
 @Slf4j
 public class HelloOrtCli {
     public static void main(String[] args) throws ParseException {
@@ -18,14 +19,19 @@ public class HelloOrtCli {
         CommandLine commandLine = parser.parse(options, args);
         String fileName = commandLine.getOptionValue("fileName", "dog.jpg");
         String version = commandLine.getOptionValue("version", "v5");
-        try (HelloOrtService helloOrtService = new HelloOrtService(version)) {
-            Result result = helloOrtService.inference(fileName);
-            log.info("fileName:{},version:{},detectionImage:{},detections:{}",
-                    fileName, version, result.getImagePath(), gson.toJson(result.getDetections()));
-        } catch (IOException e) {
-            log.debug("", e);
+        String path = commandLine.getOptionValue("path", HelloOrgEnv.getModelPath());
+        try (HelloOrtService helloOrtService = new HelloOrtService(path, version)) {
+            Result result = helloOrtService.inference(path,fileName);
+            log.info("path:{},fileName:{},version:{},detectionImage:{},detections:{}",
+                    path, fileName, version, result.getImagePath(), gson.toJson(result.getDetections()));
+        } catch (Exception e) {
+            log.error("", e);
             System.exit(1);
         }
+    }
+
+    private static Option getModelOption() {
+        return Option.builder("p").desc("model path").longOpt("path").hasArg().build();
     }
 
     private static Option getImageOption() {

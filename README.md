@@ -6,16 +6,18 @@ An **ONNX(Open Neural Network Exchange) Runtime** Demo in Java
 
 - ORT Github: <https://github.com/microsoft/onnxruntime>
 - ORT Maven Repo: <https://mvnrepository.com/artifact/com.microsoft.onnxruntime>
-- ORT Architecture: ![onnx architecture](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/228d22d3-6e3e-48b1-811c-1d48353f031c.png)
+- ORT
+  Architecture: ![onnx architecture](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/228d22d3-6e3e-48b1-811c-1d48353f031c.png)
 - ORT Workflow:
-![Onnx workflow](doc/onnx.drawio.png)
-  - [TensorRT](https://developer.nvidia.com/tensorrt)
-  - [PyTorch](https://pytorch.org/)
-  - [TensorFlow](https://www.tensorflow.org/)
-  - [onnx runtime](https://onnxruntime.ai/)
-  - [OpenVino](https://openvino.ai/)
+  ![Onnx workflow](doc/onnx.drawio.png)
+    - [TensorRT](https://developer.nvidia.com/tensorrt)
+    - [PyTorch](https://pytorch.org/)
+    - [TensorFlow](https://www.tensorflow.org/)
+    - [onnx runtime](https://onnxruntime.ai/)
+    - [OpenVino](https://openvino.ai/)
 
 ## About Inference Service on ORT Demo
+
 >
 > [YOLO(You only look once)](https://pjreddie.com/darknet/yolo)
 >
@@ -30,7 +32,11 @@ sudo chown -R $(whoami) /opt/hello-ort/
 ### UT
 
 ```sh
-mvn clean test -Dtest=HelloOrtTests#testYolo
+mvn clean -f pom.windows.21.xml test -Dtest=HelloOrtTests#testYolo
+```
+
+```sh
+mvn clean -f pom.windows.21.xml test -Dtest=HelloOrtTests#testYoloBench
 ```
 
 ![Laptop and Mouse.png](src/main/resources/Laptop and Mouse.png)
@@ -109,19 +115,19 @@ docker run -ti onnxruntime-cuda-21 ./bin/hello.sh -f dog.jpg -v v5
 #### Board Product series
 
 1. **Desktop**
-   - GeForce series
-   - RTX series
+    - GeForce series
+    - RTX series
 2. **Workstation**
-   - Quadro series
-   - Quadro NVS series
+    - Quadro series
+    - Quadro NVS series
 3. **Data Center**
-   - Tesla series
+    - Tesla series
 4. **Mobile**
-   - Tegra series
+    - Tegra series
 5. **Embedded Computing**
-   - Jetson series
+    - Jetson series
 6. **Autonomous car and driver assistance**
-   - Drive series
+    - Drive series
 
 #### CUDA(Compute Unified Device Architecture)
 

@@ -11,31 +11,30 @@ import java.util.EnumSet;
 @Slf4j
 public class HelloOrtManager {
     private static final long GB = 1024 * 1024 * 1024;
+    public static final int LIMIT = 4;
 
     public static OrtSession.SessionOptions getSessionOptions() throws OrtException {
         OrtSession.SessionOptions options = new OrtSession.SessionOptions();
         String osName = System.getProperty("os.name").toLowerCase();
-        boolean isCudaSupported = false;
-        if (osName.contains("win") || osName.contains("nix") || osName.contains("nux") || osName.contains("aix")) {
-            try {
-                // Try to load the CUDA-related library
-                System.loadLibrary("cudart");
-                isCudaSupported = true;
-            } catch (UnsatisfiedLinkError e) {
-                log.info("{}",e.getMessage());
-                log.error("CUDA is not supported on this system.");
-            }
-        }
+        options.addCPU(false);
+        options.setOptimizationLevel(OrtSession.SessionOptions.OptLevel.ALL_OPT);
         if (osName.contains("mac")) {
             options.addCoreML(EnumSet.of(CoreMLFlags.ONLY_ENABLE_DEVICE_WITH_ANE));
-        } else if (isCudaSupported) {
-            options.addCUDA(getOrtCUDAProviderOptions(2));
-        } else {
-            options.addCPU(true);
+            log.info("Use core ml");
+        } else if (osName.contains("win") || osName.contains("nix") || osName.contains("nux") || osName.contains("aix")) {
+            try {
+                options.addCUDA(getOrtCUDAProviderOptions(LIMIT));
+                log.info("Use Cuda with provider options");
+            } catch (Exception e) {
+                log.error("{}", e.getMessage());
+                try{
+                    options.addCUDA();
+                    log.info("Use Cuda without provider options");
+                } catch (Exception e2) {
+                    log.error("{}", e2.getMessage());
+                }
+            }
         }
-        options.setExecutionMode(OrtSession.SessionOptions.ExecutionMode.PARALLEL);
-        options.setMemoryPatternOptimization(true);
-        options.setOptimizationLevel(OrtSession.SessionOptions.OptLevel.ALL_OPT);
         return options;
     }
 

@@ -22,24 +22,19 @@ public class HelloOrtService implements Closeable {
 
     private HelloOrtSession inferenceSession;
 
-    public HelloOrtService(String version) {
-        try {
-            inferenceSession = modelFactory.getModel("model_" + version + ".properties");
-        } catch (Exception e) {
-            log.error("", e);
-            System.exit(1);
-        }
+    public HelloOrtService(String path, String version) throws IOException, OrtException {
+            inferenceSession = modelFactory.getModel(path, "model_" + version + ".properties");
     }
 
-    public Result inference(String imageName) {
-        Mat img = Imgcodecs.imread("/opt/hello-ort/" + imageName, Imgcodecs.IMREAD_COLOR);
+    public Result inference(String path, String imageName) {
+        Mat img = Imgcodecs.imread(path + imageName, Imgcodecs.IMREAD_COLOR);
         Result result = new Result();
         try {
             List<Detection> detections = inferenceSession.run(img);
             result.setDetections(detections);
             ImageUtil.drawPredictions(img, detections);
             log.debug("detectionList:{}", gson.toJson(detections));
-            String filePath = "/tmp/prediction-" + imageName;
+            String filePath = path + "prediction-" + imageName;
             Imgcodecs.imwrite(filePath, img);
             result.setImagePath(filePath);
         } catch (Exception e) {
@@ -51,5 +46,6 @@ public class HelloOrtService implements Closeable {
     @Override
     public void close() throws IOException {
         inferenceSession.close();
+        log.info("inferenceSession closed.");
     }
 }

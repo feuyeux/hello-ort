@@ -82,7 +82,6 @@ public abstract class HelloOrtSession implements Closeable {
     }
 
     protected List<float[]> nonMaxSuppression(List<float[]> bboxes, float iouThreshold) {
-
         // output boxes
         List<float[]> bestBboxes = new ArrayList<>();
 
@@ -96,7 +95,6 @@ public abstract class HelloOrtSession implements Closeable {
             bestBboxes.add(bestBbox);
             bboxes = bboxes.stream().filter(a -> computeIOU(a, bestBbox) < iouThreshold).collect(Collectors.toList());
         }
-
         return bestBboxes;
     }
 

@@ -6,24 +6,17 @@ import org.feuyeux.hello.ort.session.HelloOrtSession;
 import org.feuyeux.hello.ort.session.HelloOrtSessionV5;
 import org.feuyeux.hello.ort.session.HelloOrtSessionV8;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Properties;
 
 public class ModelFactory {
-
-
-    public HelloOrtSession getModel(String propertiesFilePath) throws IOException, OrtException, NotImplementedException {
+    public HelloOrtSession getModel(String path, String propertiesFilePath) throws IOException, OrtException, NotImplementedException {
 
         ConfigReader configReader = new ConfigReader();
         Properties properties = configReader.readProperties(propertiesFilePath);
-
         String modelName = properties.getProperty("modelName");
-
-        ResourceLoader resourceLoader = new ResourceLoader();
-        String modelPath = resourceLoader.getResourcePath(properties.getProperty("modelPath"));
-        String labelPath = resourceLoader.getResourcePath("coco.names");
+        String modelPath = path + properties.getProperty("modelPath");
+        String labelPath = path + "coco.names";
         float confThreshold = Float.parseFloat(properties.getProperty("confThreshold"));
         float nmsThreshold = Float.parseFloat(properties.getProperty("nmsThreshold"));
 
