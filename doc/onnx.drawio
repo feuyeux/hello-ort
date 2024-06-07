@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2024-05-15T14:03:09.206Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="Y2XZ5HjsHmVzHw2vvKLT" version="21.6.8" type="device">
+<mxfile host="Electron" modified="2024-05-26T03:26:11.974Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="CtiWiaJiZdPQMITJC3G8" version="21.6.8" type="device">
   <diagram name="第 1 页" id="LjeB5n01uUdauO_Evn69">
     <mxGraphModel dx="1418" dy="820" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -129,6 +129,9 @@
         </mxCell>
         <mxCell id="wq20_9UN-8C0ffbf87EE-6" value="ORT(Onnx Runtime) &amp;amp; Providers" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Monaco;fontSize=20;" parent="1" vertex="1">
           <mxGeometry x="240" y="280" width="370" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ux0vtoXAzeYek2KoAT3A-1" value="https://github.com/feuyeux/hello-ort" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;fontStyle=1;fontSize=14;fontColor=#004C99;" vertex="1" parent="1">
+          <mxGeometry x="650" y="1038" width="340" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

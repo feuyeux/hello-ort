@@ -1,6 +1,6 @@
 # Hello [ORT(OnnxRumTime)](https://onnxruntime.ai/)
 
-An **ONNX(Open Neural Network Exchange) Runtime** Demo in Java
+An **ONNX(Open Neural Network Exchange) Runtime** Demo
 
 ## About ORT
 
@@ -10,11 +10,11 @@ An **ONNX(Open Neural Network Exchange) Runtime** Demo in Java
   Architecture: ![onnx architecture](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/228d22d3-6e3e-48b1-811c-1d48353f031c.png)
 - ORT Workflow:
   ![Onnx workflow](doc/onnx.drawio.png)
-    - [TensorRT](https://developer.nvidia.com/tensorrt)
-    - [PyTorch](https://pytorch.org/)
-    - [TensorFlow](https://www.tensorflow.org/)
-    - [onnx runtime](https://onnxruntime.ai/)
-    - [OpenVino](https://openvino.ai/)
+  - [TensorRT](https://developer.nvidia.com/tensorrt)
+  - [PyTorch](https://pytorch.org/)
+  - [TensorFlow](https://www.tensorflow.org/)
+  - [onnx runtime](https://onnxruntime.ai/)
+  - [OpenVino](https://openvino.ai/)
 
 ## About Inference Service on ORT Demo
 
@@ -58,7 +58,7 @@ target/hello-cli/bin/hello.sh
 
 - <https://hub.docker.com/r/nvidia/cuda/>
 - <https://github.com/microsoft/onnxruntime/blob/main/dockerfiles/Dockerfile.cuda>
-- <https://org.ngc.nvidia.com/setup>
+- <https://org.ngc.nvidia.com/setup/api-key>
 
 #### prepare
 
@@ -178,7 +178,7 @@ UnsatisfiedLink no onnxruntime in java.library.path
 
 reload the dependency jar file and check it:
 
-![](doc/onnxrumtime.jar.png)
+![onnxrumtime jar](doc/onnxrumtime.jar.png)
 
 ```sh
 no cudart in java.library.path

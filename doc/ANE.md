@@ -1,5 +1,11 @@
 # ANE
 
+Apple Neural Engine (ANE)
+
+<https://machinelearning.apple.com/research/neural-engine-transformers>
+
+SoC(system-on-chip)
+
 1. A11 Bionic
 2. A12 Bionic
 3. A12X Bionic
