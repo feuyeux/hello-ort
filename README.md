@@ -38,17 +38,41 @@ An **ONNX(Open Neural Network Exchange) Runtime** Demo
 - <https://onnxruntime.ai/docs/execution-providers/CUDA-ExecutionProvider.html#requirements>
 - <https://docs.nvidia.com/deeplearning/cudnn/latest/installation/overview.html>
 
-| |ONNX Runtime | CUDA(Compute Unified Device Architecture)                                | cuDNN(CUDA Deep Neural Network library)                                                  |
+| |ONNX Runtime | CUDA(Compute Unified Device Architecture) | cuDNN(CUDA Deep Neural Network library)|
 |:-------------|:-------------------------------|:---------------------------------|:-------------------------------------------------------|
-| url|   https://github.com/microsoft/onnxruntime/tags      |  https://developer.nvidia.com/cuda-toolkit-archive | <https://developer.nvidia.com/rdp/cudnn-archive> |
-|version|1.18|CUDA Toolkit 11.8.0 (October 2022)|cuDNN v8.9.2   (June 1st, 2023), for CUDA 11.x|
-
+| url| https://github.com/microsoft/onnxruntime/tags|https://developer.nvidia.com/cuda-toolkit-archive | <https://developer.nvidia.com/rdp/cudnn-archive> |
+|version|1.18|CUDA Toolkit 11.8.0 (October 2022)|cuDNN v8.9.2 (June 1st, 2023), for CUDA 11.x|
+|version|1.18|CUDA Toolkit 12.5.0 (May 2024)|cuDNN v8.9.7 (December 5th, 2023), for CUDA 12.x|
 
 ```env
-CUDA_PATH=C:\zoo\cuda
-CUDNN_PATH=C:\zoo\cudnn8.9.2.26_cuda11
+cp "C:\Program Files\NVIDIA Corporation\Nsight Systems 2022.4.2\host-windows-x64\zlib.dll" C:\zoo\cuda\bin
+CUDA_PATH=C:\zoo\cuda12
+CUDNN_PATH=C:\zoo\cudnn8.9.7.29_cuda12
 PATH=%CUDA_PATH%\bin;%CUDA_PATH%\libnvvp;%CUDNN_PATH%\bin;...
 ```
+
+```sh
+env | grep CUDA
+```
+
+CUDA Driver API 版本
+
+```sh
+nvidia-smi
+```
+
+CUDA Runtime API 版本
+
+```sh
+nvcc -V
+```
+
+每隔5秒刷新一次GPU使用情况
+
+```sh
+watch -n 5 nvidia-smi
+```
+
 
 ### 2 CoreML
 

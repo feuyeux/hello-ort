@@ -176,6 +176,8 @@ class YOLOv8:
         return input_image
 
     def main(self):
+        print("Device:",ort.get_device())
+        print("Available providers:",ort.get_available_providers())
         """
         Performs inference using an ONNX model and returns the output image with drawn detections.
 
