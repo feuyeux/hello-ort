@@ -9,7 +9,7 @@
 
     <properties>
         <!-- https://mvnrepository.com/artifact/com.microsoft.onnxruntime/onnxruntime -->
-        <onnxruntime.version>1.17.3</onnxruntime.version>
+        <onnxruntime.version>1.18.0</onnxruntime.version>
         <jdk.version>21</jdk.version>
         <junit.version>5.10.1</junit.version>
         <log4j-slf4j.version>2.22.0</log4j-slf4j.version>

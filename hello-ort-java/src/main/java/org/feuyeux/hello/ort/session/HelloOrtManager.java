@@ -26,7 +26,7 @@ public class HelloOrtManager {
                 options.addCUDA(getOrtCUDAProviderOptions(LIMIT));
                 log.info("Use Cuda with provider options");
             } catch (Exception e) {
-                log.error("{}", e.getMessage());
+                log.error("Use Cuda failed:{}", e.getMessage());
                 try{
                     options.addCUDA();
                     log.info("Use Cuda without provider options");

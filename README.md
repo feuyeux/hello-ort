@@ -4,99 +4,16 @@ An **ONNX(Open Neural Network Exchange) Runtime** Demo
 
 ## About ORT
 
+- ORT DOC: <https://onnxruntime.ai/docs>
 - ORT Github: <https://github.com/microsoft/onnxruntime>
 - ORT Maven Repo: <https://mvnrepository.com/artifact/com.microsoft.onnxruntime>
-- ORT
-  Architecture: ![onnx architecture](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/228d22d3-6e3e-48b1-811c-1d48353f031c.png)
-- ORT Workflow:
-  ![Onnx workflow](doc/onnx.drawio.png)
+- ORT Architecture: ![architecture](doc/onnx_architecture)
+- ORT Workflow: ![workflow](doc/onnx.drawio.png)
   - [TensorRT](https://developer.nvidia.com/tensorrt)
   - [PyTorch](https://pytorch.org/)
   - [TensorFlow](https://www.tensorflow.org/)
   - [onnx runtime](https://onnxruntime.ai/)
   - [OpenVino](https://openvino.ai/)
-
-## About Inference Service on ORT Demo
-
->
-> [YOLO(You only look once)](https://pjreddie.com/darknet/yolo)
->
-> - Paper: <https://arxiv.org/abs/1506.02640>
-> - Engineering: from <https://github.com/jhgan00/java-ort-example-yolov5.git>
-
-```sh
-sudo mkdir -p /opt/hello-ort/
-sudo chown -R $(whoami) /opt/hello-ort/
-```
-
-### UT
-
-```sh
-mvn clean -f pom.windows.21.xml test -Dtest=HelloOrtTests#testYolo
-```
-
-```sh
-mvn clean -f pom.windows.21.xml test -Dtest=HelloOrtTests#testYoloBench
-```
-
-![Laptop and Mouse.png](src/main/resources/Laptop and Mouse.png)
-
-```sh
-detectionList:[{"label":"mouse","bbox":[198.35149,119.59349,224.45099,158.48425],"confidence":0.91583246},{"label":"laptop","bbox":[54.62196,24.271353,186.86736,121.20319],"confidence":0.6366785}]
-```
-
-![Prediction for Laptop and Mouse.png](doc/prediction-Laptop and Mouse.png)
-
-### CLI
-
-```sh
-mvn clean package appassembler:assemble -f pom.windows.21.xml
-target/hello-cli/bin/hello.sh
-```
-
-### DOCKER
-
-- <https://hub.docker.com/r/nvidia/cuda/>
-- <https://github.com/microsoft/onnxruntime/blob/main/dockerfiles/Dockerfile.cuda>
-- <https://org.ngc.nvidia.com/setup/api-key>
-
-#### prepare
-
-```sh
-docker login nvcr.io
-Username: $oauthtoken
-Password:
-Login Succeeded
-
-docker run -ti nvcr.io/nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04 nvcc -V
-docker run -ti nvcr.io/nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04 bash
-```
-
-#### build
-
-```sh
-# use jdk21
-export JAVA_HOME=/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home
-# build jar
-mvn clean install -DskipTests -f pom.windows.21.xml
-# build with jdk21
-docker build -t onnxruntime-cuda-21 -f Dockerfile.cuda.21 .
-```
-
-```sh
-# use jdk8
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home
-mvn clean install -DskipTests -f pom.windows.8.xml
-# build with jdk8
-docker build -t onnxruntime-cuda-8 -f Dockerfile.cuda.8 .
-```
-
-#### run
-
-```sh
-docker run -ti onnxruntime-cuda-21 java -version
-docker run -ti onnxruntime-cuda-21 ./bin/hello.sh -f dog.jpg -v v5
-```
 
 ## About dependencies
 
@@ -116,46 +33,21 @@ docker run -ti onnxruntime-cuda-21 ./bin/hello.sh -f dog.jpg -v v5
 10. [Hopper](https://en.wikipedia.org/wiki/Hopper_(microarchitecture)) [格蕾丝·赫柏](https://zh.wikipedia.org/wiki/%E8%91%9B%E9%BA%97%E7%B5%B2%C2%B7%E9%9C%8D%E6%99%AE)
 11. [Blackwell](https://en.wikipedia.org/wiki/Blackwell_(microarchitecture))  [戴维·布莱克维尔](https://zh.wikipedia.org/wiki/%E6%88%B4%E7%BB%B4%C2%B7%E5%B8%83%E8%8E%B1%E5%85%8B%E9%9F%A6%E5%B0%94)
 
-#### Board Product series
-
-1. **Desktop**
-    - GeForce series
-    - RTX series
-2. **Workstation**
-    - Quadro series
-    - Quadro NVS series
-3. **Data Center**
-    - Tesla series
-4. **Mobile**
-    - Tegra series
-5. **Embedded Computing**
-    - Jetson series
-6. **Autonomous car and driver assistance**
-    - Drive series
-
-#### CUDA(Compute Unified Device Architecture)
-
-- <https://developer.nvidia.com/cuda-downloads>
-
-#### CUDA Deep Neural Network library (cuDNN)
-
-- <https://developer.nvidia.com/cudnn-downloads>
-- <https://docs.nvidia.com/deeplearning/cudnn/latest/installation/overview.html>
-
 #### Requirements
 
-<https://onnxruntime.ai/docs/execution-providers/CUDA-ExecutionProvider.html#requirements>
+- <https://onnxruntime.ai/docs/execution-providers/CUDA-ExecutionProvider.html#requirements>
+- <https://docs.nvidia.com/deeplearning/cudnn/latest/installation/overview.html>
 
-| ONNX Runtime | CUDA                                                             | cuDNN                                                  |
-|--------------|------------------------------------------------------------------|--------------------------------------------------------|
-| 1.17         | 11.8 <https://developer.nvidia.com/cuda-11-8-0-download-archive> | 8.5.0 <https://developer.nvidia.com/rdp/cudnn-archive> |
+| |ONNX Runtime | CUDA(Compute Unified Device Architecture)                                | cuDNN(CUDA Deep Neural Network library)                                                  |
+|:-------------|:-------------------------------|:---------------------------------|:-------------------------------------------------------|
+| url|   https://github.com/microsoft/onnxruntime/tags      |  https://developer.nvidia.com/cuda-toolkit-archive | <https://developer.nvidia.com/rdp/cudnn-archive> |
+|version|1.18|CUDA Toolkit 11.8.0 (October 2022)|cuDNN v8.9.2   (June 1st, 2023), for CUDA 11.x|
 
-```sh
-cuda_11.8.0_522.06_windows.exe
-D:\coding\cuda\11.8
-D:\coding\cuda\11.8\lib\x64
-D:\coding\cuda\11.8\extras\CUPTI\lib64
-D:\coding\cudnn\8.5.0.96_cuda11
+
+```env
+CUDA_PATH=C:\zoo\cuda
+CUDNN_PATH=C:\zoo\cudnn8.9.2.26_cuda11
+PATH=%CUDA_PATH%\bin;%CUDA_PATH%\libnvvp;%CUDNN_PATH%\bin;...
 ```
 
 ### 2 CoreML

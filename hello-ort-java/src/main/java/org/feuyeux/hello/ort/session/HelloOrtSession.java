@@ -62,7 +62,7 @@ public abstract class HelloOrtSession implements Closeable {
     }
 
     public static OrtEnvironment getEnvironment() {
-        return OrtEnvironment.getEnvironment(OrtLoggingLevel.ORT_LOGGING_LEVEL_WARNING, "HELLO-ORT");
+        return OrtEnvironment.getEnvironment(OrtLoggingLevel.ORT_LOGGING_LEVEL_ERROR, "HELLO-ORT");
     }
 
     public abstract List<Detection> run(Mat img) throws OrtException;

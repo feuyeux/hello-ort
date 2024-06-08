@@ -9,8 +9,8 @@
 
     <properties>
         <!-- https://mvnrepository.com/artifact/com.microsoft.onnxruntime/onnxruntime -->
-        <onnxruntime.version>1.17.3</onnxruntime.version>
-        <jdk.version>8</jdk.version>
+        <onnxruntime.version>1.18.0</onnxruntime.version>
+        <jdk.version>21</jdk.version>
         <junit.version>5.10.1</junit.version>
         <log4j-slf4j.version>2.22.0</log4j-slf4j.version>
         <lombok.version>1.18.30</lombok.version>
@@ -122,6 +122,16 @@
                             <id>hello</id>
                         </program>
                     </programs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.3</version>
+                <configuration>
+                    <argLine>
+                        -XX:+EnableDynamicAgentLoading
+                    </argLine>
                 </configuration>
             </plugin>
         </plugins>

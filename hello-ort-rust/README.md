@@ -12,7 +12,7 @@ export LD_LIBRARY_PATH=${onnxruntime_path}/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_P
 ```
 
 ```sh
-export model_path=/Users/hanl5/coding/feuyeux/hello-ort/hello-ort-java/src/main/resources/yolov8s.onnx
-export source_path=/Users/hanl5/coding/feuyeux/hello-ort/hello-ort-java/src/main/resources/dog.jpg
+export model_path=../hello-ort-java/src/main/resources/yolov8s.onnx
+export source_path=../hello-ort-java/src/main/resources/dog.jpg
 cargo run --release -- --model ${model_path} --source ${source_path} --task detect
 ```
