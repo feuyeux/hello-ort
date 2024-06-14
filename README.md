@@ -45,10 +45,11 @@ An **ONNX(Open Neural Network Exchange) Runtime** Demo
 |version|1.18|CUDA Toolkit 12.5.0 (May 2024)|cuDNN v8.9.7 (December 5th, 2023), for CUDA 12.x|
 
 ```env
-cp "C:\Program Files\NVIDIA Corporation\Nsight Systems 2022.4.2\host-windows-x64\zlib.dll" C:\zoo\cuda\bin
-CUDA_PATH=C:\zoo\cuda12
-CUDNN_PATH=C:\zoo\cudnn8.9.7.29_cuda12
+CUDA_PATH=D:\garden\cuda12.5
+CUDNN_PATH=D:\garden\cudnn8.9.7.29_cuda12
 PATH=%CUDA_PATH%\bin;%CUDA_PATH%\libnvvp;%CUDNN_PATH%\bin;...
+
+cp "C:\Program Files\NVIDIA Corporation\Nsight Systems 2024.2.3\host-windows-x64\zlib.dll" D:\garden\cuda12.5\bin
 ```
 
 ```sh
