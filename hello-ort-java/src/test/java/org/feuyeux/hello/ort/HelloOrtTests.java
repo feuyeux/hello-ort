@@ -17,8 +17,12 @@ public class HelloOrtTests {
     @Test
     public void testYolo() {
         try (HelloOrtService helloOrtService = new HelloOrtService(HelloOrgEnv.getModelPath(), "v8")) {
-            Result result = helloOrtService.inference(HelloOrgEnv.getModelPath(), imageNames[0]);
-            log.info("{}", result);
+            Result result;
+            for (int i = 0; i < 100; i++) {
+                result = helloOrtService.inference(HelloOrgEnv.getModelPath(), imageNames[0]);
+                log.info("{}", result);
+                TimeUnit.MICROSECONDS.sleep(300);
+            }
         } catch (Exception e) {
             log.error("", e);
         }

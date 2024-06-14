@@ -15,7 +15,7 @@ sudo chown -R $(whoami) /opt/hello-ort/
 ### UT
 
 ```sh
-mvn clean -f pom.windows.21.xml test -Dtest=HelloOrtTests#testYolo
+mvn clean test -Dtest=HelloOrtTests#testYolo
 ```
 
 ```sh
