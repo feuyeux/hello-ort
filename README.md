@@ -40,7 +40,7 @@ An **ONNX(Open Neural Network Exchange) Runtime** Demo
 
 | |ONNX Runtime | CUDA(Compute Unified Device Architecture) | cuDNN(CUDA Deep Neural Network library)|
 |:-------------|:-------------------------------|:---------------------------------|:-------------------------------------------------------|
-| url| https://github.com/microsoft/onnxruntime/tags|https://developer.nvidia.com/cuda-toolkit-archive | <https://developer.nvidia.com/rdp/cudnn-archive> |
+| url| <https://github.com/microsoft/onnxruntime/tags>|<https://developer.nvidia.com/cuda-toolkit-archive> | <https://developer.nvidia.com/rdp/cudnn-archive> |
 |version|1.18|CUDA Toolkit 11.8.0 (October 2022)|cuDNN v8.9.2 (June 1st, 2023), for CUDA 11.x|
 |version|1.18|CUDA Toolkit 12.5.0 (May 2024)|cuDNN v8.9.7 (December 5th, 2023), for CUDA 12.x|
 
@@ -73,7 +73,6 @@ nvcc -V
 ```sh
 watch -n 5 nvidia-smi
 ```
-
 
 ### 2 CoreML
 

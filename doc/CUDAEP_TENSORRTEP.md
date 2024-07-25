@@ -16,16 +16,16 @@ The workspace memory that TensorRT can allocate for intermediate buffers inside 
 
 ![nvidia-inference-stack](https://developer-blogs.nvidia.com/wp-content/uploads/2023/01/nvidia-inference-stack.png)
 
-TensorRT 高性能推理引擎 https://developer.nvidia.com/tensorrt
+TensorRT 高性能推理引擎 <https://developer.nvidia.com/tensorrt>
 
-- cuDNN (CUDA Deep Neural Network) https://docs.nvidia.com/cudnn 高性能深度学习库
-- cuBLAS (CUDA Basic Linear Algebra Subroutines) https://docs.nvidia.com/cuda/cublas 基础线性代数库
+- cuDNN (CUDA Deep Neural Network) <https://docs.nvidia.com/cudnn> 高性能深度学习库
+- cuBLAS (CUDA Basic Linear Algebra Subroutines) <https://docs.nvidia.com/cuda/cublas> 基础线性代数库
 
 ## ONNX CUDA EP practice
 
 ### 镜像版本 21.09
 
-logan-base-python:nvidia-21.09-py3-092501
+`nvidia-21.09-py3-092501`
 
 ### CUDA版本 11.4
 
